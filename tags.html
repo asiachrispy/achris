@@ -1,0 +1,16 @@
+---
+layout: page
+title: 标签
+---
+<h2 class="orange">苹果</h2>
+<ul>{% for post in site.tags.apple %}<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a></li>{% endfor %}</ul>
+<h2 class="orange">互联网</h2>
+<ul>{% for post in site.tags.internet %}<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a></li>{% endfor %}</ul>
+<h2 class="orange">移动终端</h2>
+<ul>{% for post in site.tags.mobile %}<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a></li>{% endfor %}</ul>
+<h2 class="orange">科技</h2>
+<ul>{% for post in site.tags.technology %}<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a></li>{% endfor %}</ul>
+<h2 class="orange">工具</h2>
+<ul>{% for post in site.tags.tools %}<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a></li>{% endfor %}</ul>
+<h2 class="orange">软件</h2>
+<ul>{% for post in site.tags.software %}<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a></li>{% endfor %}</ul>

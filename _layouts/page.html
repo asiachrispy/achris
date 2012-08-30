@@ -5,20 +5,18 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>{{ page.title }}</title>
     <a href="https://github.com/asiachrispy/achris"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://pic.yupoo.com/perrydu/Ce5W9UMv/duiIc.png" alt="Fork me on GitHub" /></a>
-    <p>
-			<a href="/" class="blue">首页</a> 
-			<a href="/about.html" class="blue">关于我</a> 
-			<a href="/tags.html" class="blue">标签</a> 
-			<a href="/project.html" class="blue">项目</a> 
-		<!--	<a href="/place.html" class="blue">足迹</a> -->
-		</p>
+    <p><a href="/" class="blue">首页</a> <a href="/about.html" class="blue">关于我</a> <a href="/tags.html" class="blue">标签</a> <a href="/project.html" class="blue">项目</a> <a href="/place.html" class="blue">足迹</a></p>
     <hr />
     <h1>{{ page.title }}</h1>
-    <p><img src="http://pic.yupoo.com/perrydu/CeevVWU0/SdbCr.jpg " alt="travel" /></p>
   </head>
   <body>
     {{ content }}
-    <hr />
-    Powered by jekyll and github page.
+    <br />
+    <p>看看我最近的日志：</p>
+    <ul>
+      {% for post in site.posts limit: 10 %}
+        <li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
   </body>
 </html>

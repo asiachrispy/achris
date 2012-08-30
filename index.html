@@ -1,12 +1,21 @@
 ---
 layout: default
-title: 我的Blog
-domain:achris
+title: 杜顺帆的个人博客
 ---
-<h2>{{ page.title }}</h2>
-<p>最新文章</p>
-<ul>
-{% for post in site.posts %}
-<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{domain}}{{ post.url }}">{{ post.title }}</a></li>
+<h2>新日志</h2>
+{% for post in site.posts limit: 3  %}
+<article>
+  <header>
+    <h3><a href="{{ post.url }}" class="green">{{ post.title }}</a></h3>
+    <p>{{ post.date | date_to_string }}</p>
+  </header>
+    <section>{{ post.description }}</section>
+</article>
 {% endfor %}
+<br />
+<h2>以往的日志</h2>
+<ul>
+  {% for post in site.posts limit: 10 offset: 3 %}
+    <li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a></li>
+  {% endfor %}
 </ul>
