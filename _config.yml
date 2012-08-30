@@ -1,2 +1,2 @@
-permalink: /achris/blog/:title
-markdown: rdiscount
+permalink:/achris/blog/:year/:minth/:day/:title
+markdown:rdiscount

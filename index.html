@@ -16,6 +16,8 @@ title: 黄忠的个人博客
 <h2>以往的日志</h2>
 <ul>
   {% for post in site.posts limit: 10 offset: 3 %}
-    <li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a></li>
+  <li>{{ post.date | date_to_string }} 
+		<a href="{{ site.baseurl }}{{ post.url }}" class="green">{{ post.title }}</a>
+	</li>
   {% endfor %}
 </ul>
