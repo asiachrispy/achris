@@ -1,2 +1,2 @@
-permalink: /blog/:title
+permalink: /achris/blog/:title
 markdown: rdiscount
