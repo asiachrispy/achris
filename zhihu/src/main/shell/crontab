@@ -1,0 +1,4 @@
+
+#-----------------------------------------
+## 每天执行
+* 11,23 * * * /ROOT/project/crawler/zhihu/daily_crawler.sh start 2>&1 1>> /ROOT/project/crawler/zhihu/daily_run.log

@@ -1,0 +1,14 @@
+共进行了五个步骤：
+
+1、InjectJob：从参数中的seedDir中获取种子文件的路径，放到抓取链中
+
+2、GeneratorJob：从抓取链获取链接，放入抓取队列
+
+3、FetcherJob：从抓取队列中获取任务开始进行抓取
+
+4、ParserJob：对抓取的网页进行解析，产生新的链接和网页解析结果
+
+5、DbUpdaterJob：将新的链接更新到抓取链中
+
+6、SolrIndexerJob：对抓取的内容进行索引
+

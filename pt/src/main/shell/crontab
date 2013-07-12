@@ -1,0 +1,7 @@
+
+# 每周一的 14:20 执行
+20 14 * * 1  /ROOT/project/crawler/
+
+#-----------------------------------------
+## 每周1,2,3,4,5的 14:20 执行,脚本会判断是否为星期一，以便使用不同的配置文件
+20 14 * * 1,2,3,4,5 /ROOT/project/crawler/main.sh start 2>&1 1>> /ROOT/project/crawler/run.log

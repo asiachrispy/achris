@@ -1,0 +1,35 @@
+ Solr分布式搜索技术实现分析
+概述
+
+Solr 单机支持的搜索数据量是有一定上限的，这个取决于搜索的复杂程度，服务器的硬件配置与业务的要求等等，所以将搜索功能分布化将是对于大数据搜索的一个必然趋势。
+
+Solr从1.3版本开始，自带了分布式搜索（Distributed Search）。这个功能使得Solr能够通过多服务器进行横行扩展，对数据进行水平拆分，从而支持海量数据的搜索功能。
+
+注意事项
+
+在使用Solr进行分布式搜索的时候，需要注意以下细节：
+
+    schema.xml中定义的unique key必须保存在索引中。因为Solr在进行2nd phrase搜索时需要使用这个unique key进行数据一致性的二次确认与获取搜索要求查询的字段数据。
+    分布在不同服务器中的索引文件中包含的unique key不要有重复。因为Solr在进行1st phrase搜索时需要根据这些unique key进行排序与去重，如果unique key有重复，包含相同unique key的doc结果将随机返回。
+    搜索结果不要有过多的翻页。因为Solr的分布式搜索中，会将需要翻页排序后的总结果全部返回给proxy solr server进行汇总排序，如果翻页过多，那么对网络带宽将会照成一定的压力。
+    注意HTTP连接数。因为Solr的分布式搜索中，服务器可能既是search server又是proxy server，一遍等待http请求应答有一遍处理http请求，多台服务器之间就可能会出现死锁。
+
+分布式搜索逻辑实现
+
+Query component的实现原则为：Multi-phased approach, allowing for inconsistency，具体的实现细节如下：
+
+    客户端发送搜索请求给Solr集群中的任意一台服务器SP。
+    SP服务器处理分布式查询请求
+        Phase One
+            构建查询请求，只获取查询Doc的unique key与sort field字段。
+            将构建好的请求通过HTTP发送给每一个Solr Shard节点。
+            等待Solr Shard节点返回查询结果。
+            根据排序规则，逐个合并Solr Shard节点返回的查询结果。
+        Phase Two
+            构建查询请求，根据unique key查询客户端查询的相关字段数据。
+            将构建好的请求通过HTTP发送给每一个需要请求的Solr Shard节点。
+            等待Solr Shard节点返回查询结果。
+            逐个合并Solr Shard节点返回的查询结果，构建本次查询的最终结果。
+            SP服务器将分布式查询结果返回给客户端
+
+注意：当前的版本中，分布式查询中如果有某一个Shard异常，整体的查询将失败。

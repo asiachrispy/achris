@@ -1,0 +1,76 @@
+#!/bin/sh
+EXEC_CLASS="com.dajie.crawler.zhihu.ZHCrawler"
+
+case $1 in
+start)
+    server_home="/ROOT/project/crawler/zhihu"
+    LIB_DIR=/ROOT/project/crawler/zhihu/lib
+    LIB_JARS=`ls $LIB_DIR|grep .jar|awk '{print "'$LIB_DIR'/"$0}'|tr "\n" ":"`
+    LIB_JARS=$LIB_JARS:$server_home/dajie_crawler_zhihu.properties
+
+    nohup /ROOT/server/jdk/bin/java -server
+
+整个堆大小=年轻代大小 + 年老代大小 + 持久代大小.
+
+    初始堆大小，物理内存的1/64(<1GB)
+    -Xms1024M
+
+    最大堆大小 ，物理内存的1/4(<1GB)
+    -Xmx1024M
+
+    年轻代大小=eden + from survivor space  + to survivor space
+    -Xmn768M
+
+    每个线程的堆栈大小
+    -Xss1024k
+
+    设置持久代(perm gen)初始值
+    -XX:PermSize=32M
+
+    设置持久代最大值
+    -XX:MaxPermSize=64M
+
+    Eden区与Survivor区的大小比值，设置为8,则两个Survivor区与一个Eden区的比值为2:8,一个Survivor区占整个年轻代的1/10
+    -XX:SurvivorRatio=8
+
+    -XX:+PrintGCDetails
+
+    CMS GC触发条件为旧生代已使用空间达到以设定的这个参数（百分比）
+    -XX:CMSInitiatingOccupancyFraction=80
+
+    启用CMS进行旧生代对象的GC，其默认开启的线程数（并行GC线程数+3）/4,
+    -XX:+UseConcMarkSweepGC
+
+    指定CMS线程数
+    -XX:ParallelCMSThreads=4
+
+    开启CMS整理内存碎片的功能，默认每次FGC进行（需要暂停应用程序）
+    -XX:+UseCMSCompactAtFullCollection
+
+    指定多次此FGC后才整理 内存碎片
+    -XX:CMSFullGCsBeforeCompaction=2
+
+
+    -XX:-CMSParallelRemarkEnabled
+
+    禁用显示调用GC(Syetem.gc())
+    -XX:+DisableExplicitGC
+
+    每兆堆空闲空间中SoftReference的存活时间
+    -XX:SoftRefLRUPolicyMSPerMB=0
+    -Xloggc:/ROOT/logs/crawler-zhihu/gc_crawler_zhihu.log
+    -Dfile.encoding=UTF-8
+    -Dsun.jnu.encoding=UTF-8
+    -classpath $LIB_JARS $EXEC_CLASS &
+    ;;
+
+status)
+    echo `ps aux|grep "$EXEC_CLASS" |grep 'grep' -v|awk '{print $2}'`
+    ;;
+
+stop)
+    pid=`ps aux|grep "$EXEC_CLASS" |grep 'grep' -v|awk '{print $2}'`
+    kill -9 $pid
+    ;;
+
+esac

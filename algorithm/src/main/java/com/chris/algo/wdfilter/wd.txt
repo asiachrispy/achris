@@ -1,0 +1,176 @@
+ 可能不止在天朝，绝大多数网站都会需要违禁词过滤模块，用于对不雅言论进行屏蔽；所以这个应该算是网站的基础功能。大概在去年的时候我开发过这个功能，当时用6600+(词数)的违禁词库，过滤2000+(字数)的文章，耗时大概20ms左右，当时自我感觉还挺良好。过了这一段时间，回想一下，其实有不少地方可以做优化、可以总结；于是从头到尾捋了一遍。
+原始需求：
+     违禁词最原始的需求，也是最直观的，即是查找一篇未知的文档中，是否包含了一个指定词语集合(违禁词库)中的词语。其实要实现这个功能的思路有许多，也可以很简单；但为了达到一定的效率，需要一些算法和数据结构的设计。
+逻辑整理：
+     将原始的需求转换成可实现的逻辑，这里根据思维方向(出发点)，可以有两个不同的选择：1.  遍历文档的每个词，查看违禁词库中是否包含这个词； 2.  遍历违禁词库中的每个词， 查看文档中是否包含这个词。
+     我这里采用的是第一种思维方向，原因有二：
+     a.  我要过滤的文档的字数，大部分集中的2000~5000之间，少于违禁词的个数；遍历少的从性能上讲，有先天的优势。
+     b.  待过滤的文档是未知的，且变化的，而违禁词已知且固定；于是我们可对违禁词的数据结构做一定的设计，加快一个词在其中的查找，所以需要遍历的是文档（较主要的一个原因）。
+     思路有了，简单概括为：从文档中取词—>该词是否属于违禁词。
+     下一步我们需要整理出实现逻辑的步骤，在针对每一步骤做设计和优化。步骤如下：
+
+     1.   取出下一个字节（若最后一个字节：跳至结束），
+     2.   判断是否为汉字，是：记录该字节的位置w，并继续下一步；否：返回第1步。
+     3.   判断此汉字是否是某个违禁词的开头，是：继续下一步；否：返回第1步。
+     4.   继续读取下一个字符（若最后一个字节：跳至结束），判断是否为汉字，是：继续下一步；否：返回第一步。
+     5.   将上一步得到汉字和前面的汉字组成字符串，判断是否是某个违禁词的前缀。是：继续下一步；否：跳回第1步（取w+1字节）。
+     6.   查看这个前缀是否就是违禁词。是继续下一步；否：返回第4步。
+     7.   记录下这个违禁词的信息（词，长度，位置等）。
+     8.   返回第1步（从w+该违禁词长度+1处取词）
+     9.   结束。
+
+     老鸟们，可能都熟悉，这是分词中的前缀匹配法，其实违禁词过滤的思路和搜索中分词的思路相似，所以我也有参考Lucene在分词时的源代码来实现。另：我目前处理的违禁词中只有汉字，若您处理时有其他符号，可增加些判断。
+    下面是这部分逻辑的源代码：
+01	/**
+02	 * 过滤违禁词
+03	 * @param sentence:待过滤字符串
+04	 * @return
+05	 */
+06	private BadInfo findBadWord(String sentence) {
+07	    CharType[] charTypeArray = getCharTypes(sentence);//获取出每个字符的类型
+08	    BadInfo result = new BadInfo(sentence);
+09	    BadWordToken token;
+10	    int i = 0, j;
+11	    int length = sentence.length();
+12	    int foundIndex;
+13	    char[] charArray;
+14	    StringBuffer wordBuf = new StringBuffer();
+15	    while (i < length) {
+16	        // 只处理汉字和字母
+17	        if (CharType.HANZI == charTypeArray[i]
+18	                || CharType.LETTER == charTypeArray[i]) {
+19	            j = i + 1;
+20	            wordBuf.delete(0, wordBuf.length());//新的一轮匹配,清除掉原来的
+21	            wordBuf.append(sentence.charAt(i));
+22	            charArray = new char[] { sentence.charAt(i) };
+23	            foundIndex = wordDict.getPrefixMatch(charArray);//前缀匹配违禁词
+24
+25	            //foundIndex表示记录了前缀匹配的位置
+26	            while (j <= length && foundIndex != -1) {
+27
+28	                // 表示找到了
+29	                if (wordDict.isEqual(charArray, foundIndex)
+30	                        && charArray.length > 1) {
+31	                    token = new BadWordToken(new String(charArray), i, j);
+32	                    result.addToken(token);//记录下来
+33	                    i = j - 1; // j在匹配成功时已经自加了，这里是验证确实是违禁词，所以需要将j前一个位置给i
+34	                }
+35	                // 去掉空格
+36	                while (j < length
+37	                        && charTypeArray[j] == CharType.SPACE_LIKE)
+38	                    j++;
+39	                if (j < length
+40	                        && (charTypeArray[j] == CharType.HANZI || CharType.LETTER == charTypeArray[j])) {
+41	                    //将下个字符和前面的组合起来, 继续前缀匹配
+42	                    wordBuf.append(sentence.charAt(j));
+43	                    charArray = new char[wordBuf.length()];
+44	                    wordBuf.getChars(0, charArray.length, charArray, 0);
+45	                    foundIndex = wordDict.getPrefixMatch(charArray,
+46	                            foundIndex);//前缀匹配违禁词
+47	                    j++;
+48	                } else {
+49	                    break;
+50	                }
+51
+52	            }
+53	        }
+54	        i++;
+55	    }
+56	    return result;
+57	}
+
+     上面的逻辑和代码实现只是过滤违禁词外层实现，具体如何在违禁词库中，查询指定字符串，是最为关键的，即：词典WordDict的数据结构，和它的算法getPrefixMatch() 方法，也是涉及到性能优化的地方。
+数据结构：词典
+     先来说说词典WordDict的数据结构吧，它作为一个容器，里面记录所有违禁词。
+     为了快速查找，使用了散列的思想和类似索引倒排的结构，通过一个三维的char 数组来实现。
+1	private char[][][] wordItem_real;
+
+     第一维 wordItem_real[i] 其含义是：具有相同开头汉字X，的所有违禁词（一组）。其中下标 i 为 X 的 GB2312 码，这样只要对文档中的某一个汉字一转码，就能马上找到以此汉字开头的所有违禁词，算是一种散列吧；
+     另：每组违禁词 是有序的（升序），先按长度排序，再按 char 排序。查找时用到了二分查找所以需要保持有序。
+
+     第二维 wordItem_real[i][j] 其含义是：具体的一个违禁词的字符串数组，例如违禁词“红薯” = {'红','薯'}。
+
+     第三维 wordItem_real[i][j][k] 就是 词中某个汉字了。
+     词典的初始化代码，这里就不贴了，主要都是些读文件，扫描单词，和排序等一些基础代码。
+算法：二分查找与前缀匹配
+     接下来是 getPrefixMatch() 算法，它肯定依赖于 WordDict 词典的数据结构，就不多说了。它的目的是：从词典中查找以charArray对应的单词为前缀(prefix)的单词的位置, 并返回第一个满足条件的位置。为了减小搜索代价, 可以根据已有知识设置起始搜索位置, 如果不知道起始位置，默认是0
+     它的实现思路是：首先通过对参数中第一个字符 转GB2312 码，并根据此码获得 具有相同开头汉字的那组违禁词。然后在通过二分查找的方式，查看这组违禁词中是否包含 参数字符串前缀的 词；二分查找中具体的比较方法在稍后贴出。
+01	/**
+02	 *
+03	 *
+04	 * @see{getPrefixMatch(char[] charArray)}
+05	 * @param charArray
+06	 *            前缀单词
+07	 * @param knownStart
+08	 *            已知的起始位置
+09	 * @return 满足前缀条件的第一个单词的位置
+10	 */
+11	public int getPrefixMatch(char[] charArray, int knownStart) {
+12	    int index = Utility.getGB2312Id(charArray[0]);
+13	    if (index == -1)
+14	        return -1;
+15	    char[][] items = wordItem_real[index];
+16	    if(items == null){
+17	        return -1; //没有以此字开头的违禁词
+18	    }
+19	    int start = knownStart, end = items.length - 1;
+20
+21	    int mid = (start + end) / 2, cmpResult;
+22
+23	    // 二分查找法
+24	    while (start <= end) {
+25	        cmpResult = Utility.compareArrayByPrefix(charArray, 1, items[mid],
+26	                0);
+27	        if (cmpResult == 0) {
+28	            // 获取第一个匹配到的（短的优先）
+29	            while (mid >= 0
+30	                    && Utility.compareArrayByPrefix(charArray, 1,
+31	                            items[mid], 0) == 0)
+32	                mid--;
+33	            mid++;
+34	            return mid;// 找到第一个以charArray为前缀的单词
+35	        } else if (cmpResult < 0)
+36	            end = mid - 1;
+37	        else
+38	            start = mid + 1;
+39	        mid = (start + end) / 2;
+40	    }
+41	    return -1;
+42	}
+
+     下面是上述代码中，二分查找的比较方式：根据前缀来判断两个字符数组的大小，当前者为后者的前缀时，表示相等，当不为前缀时，按照普通字符串方式比较。呵呵，这里算是盗用lucene 源代码了。
+01	public static int compareArrayByPrefix(char[] shortArray, int shortIndex,
+02	    char[] longArray, int longIndex) {
+03
+04	  // 空数组是所有数组的前缀，不考虑index
+05	  if (shortArray == null)
+06	    return 0;
+07	  else if (longArray == null)
+08	    return (shortIndex < shortArray.length) ? 1 : 0;
+09
+10	  int si = shortIndex, li = longIndex;
+11	  while (si < shortArray.length && li < longArray.length
+12	      && shortArray[si] == longArray[li]) {
+13	    si++;
+14	    li++;
+15	  }
+16	  if (si == shortArray.length) {
+17	    // shortArray 是 longArray的prefix
+18	    return 0;
+19	  } else {
+20	    // 此时不可能si>shortArray.length因此只有si <
+21	    // shortArray.length，表示si没有到达shortArray末尾
+22
+23	    // shortArray没有结束，但是longArray已经结束，因此shortArray > longArray
+24	    if (li == longArray.length)
+25	      return 1;
+26	    else
+27	      // 此时不可能li>longArray.length因此只有li < longArray.length
+28	      // 表示shortArray和longArray都没有结束，因此按下一个数的大小判断
+29	      return (shortArray[si] > longArray[li]) ? 1 : -1;
+30	  }
+31	}
+
+     主要的思路和实现代码都已经讲明了，若大家有更好的过滤违禁词的算法，希望分享，周末愉快。
+    参考资料：Lucene 源代码
+    原创博客，转载请注明： http://my.oschina.net/BreathL/blog/56265

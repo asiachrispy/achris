@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd" >
+<mapper namespace="com.chris.crawler.zhihu.dao.ZHLogDao">
+
+    <insert id="insert" parameterType="com.chris.crawler.zhihu.model.ZHLog">
+        INSERT INTO tb_crawler_zhihu_log (start_id, end_id)
+        VALUES (#{startId,jdbcType=INTEGER},
+                #{endId,jdbcType=INTEGER})
+    </insert>
+
+    <update id="update" parameterType="com.chris.crawler.zhihu.model.ZHLog">
+        update tb_crawler_zhihu_log
+        set end_id=#{endId,jdbcType=INTEGER},
+         start_id=#{startId,jdbcType=INTEGER}
+         where id =#{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getEnd" resultType="int" parameterType="java.lang.Integer">
+        select end_id from tb_crawler_zhihu_log where id =#{id,jdbcType=INTEGER}
+    </select>
+    <select id="getStart" resultType="int" parameterType="java.lang.Integer">
+       select start_id from tb_crawler_zhihu_log where id =#{id,jdbcType=INTEGER}
+   </select>
+</mapper>

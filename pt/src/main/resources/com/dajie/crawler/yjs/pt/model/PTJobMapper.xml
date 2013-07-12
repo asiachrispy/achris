@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd" >
+<mapper namespace="com.chris.crawler.yjs.pt.dao.PTJobDao">
+
+    <resultMap id="ptJobResultMap" type="com.chris.crawler.yjs.pt.model.PTJob">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="md5_url" property="md5Url" jdbcType="VARCHAR"/>
+        <result column="cityen" property="cityEN" jdbcType="VARCHAR"/>
+        <result column="citycn" property="cityCN" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="column_list">
+        id,url,md5_url,cityen,citycn,title,create_date
+    </sql>
+
+    <sql id="column_list_1">
+        url,citycn,title
+    </sql>
+
+    <insert id="insertPTJob" parameterType="com.chris.crawler.yjs.pt.model.PTJob">
+        INSERT INTO tb_yjs_pt_crawler (url,md5_url, cityen,citycn,title)
+        VALUES (#{url,jdbcType=VARCHAR},
+                #{md5Url,jdbcType=VARCHAR},
+                #{cityEN,jdbcType=VARCHAR},
+                #{cityCN,jdbcType=VARCHAR},
+                #{title,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="exist" resultType="int" parameterType="java.lang.String">
+        select count(*)  from  tb_yjs_pt_crawler where md5_url=#{value, jdbcType=VARCHAR}
+    </select>
+
+    <select id="getByDate" resultMap="ptJobResultMap" parameterType="java.lang.String">
+        select
+        <include refid="column_list_1"/>
+        from tb_yjs_pt_crawler where left(create_date,10)=#{value, jdbcType=VARCHAR} ORDER BY citycn
+    </select>
+
+    <delete id="deleteByMd5Url" parameterType="java.lang.String">
+        delete  from  tb_yjs_pt_crawler where md5_url=#{value, jdbcType=VARCHAR}
+    </delete>
+</mapper>

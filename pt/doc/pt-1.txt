@@ -1,0 +1,27 @@
+﻿-------------------1
+Set following before you openConnection,
+System.setProperty("http.proxyHost", "host");
+System.setProperty("http.proxyPort", "port_number");
+
+If proxy requires authentication,
+
+System.setProperty("http.proxyUser", "user");
+System.setProperty("http.proxyPassword", "password");
+
+ -------------------2
+String url = "http://www.google.com/",
+       proxy = "proxy.mydomain.com",
+       port = "8080";
+URL server = new URL(url);
+Properties systemProperties = System.getProperties();
+systemProperties.setProperty("http.proxyHost",proxy);
+systemProperties.setProperty("http.proxyPort",port);
+HttpURLConnection connection = (HttpURLConnection)server.openConnection();
+connection.connect();
+InputStream in = connection.getInputStream();
+readResponse(in);
+
+-------------------3
+//Proxy instance, proxy ip = 10.0.0.1 with port 8080
+Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("10.0.0.1", 8080));
+conn = new URL(urlString).openConnection(proxy);

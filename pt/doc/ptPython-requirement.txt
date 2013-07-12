@@ -1,0 +1,48 @@
+任务：应届生网站北京，上海，广州，南京，深圳，武汉，成都，天津，其它九地非应届生合作企业的实习职位抓取
+格式：职位title  职位链接
+
+时间规则：
+周二至周五每天14：00开始抓取当日各地实习频道里的职位，截止到头一天抓取的最后一条职位。
+周六日暂停抓取
+周一14：00抓取截止到上周五抓取的最后一条职位
+（如果最后一条职位没有找到，可能是删除了，那么默认为倒数第二条职位，以此类推）
+
+职位Title详细格式：[地点]+title
+
+详细抓取规则：1. 除去[地点]，title字数小于8个字（含8个字）的不抓取。
+               2.title中含有“兼职”或“某”字样的不抓取。
+               3.有些职位会有多个地点，例如：[北京|深圳]title ，那么该职位被抓取一次即可，在抓取深圳时不必重复此职位。
+               4.在“其它”地点中，有时会重复出现在北京或上海等地的职位，该职位在抓取北京或上海时已被抓取过，不必反复抓取。
+               5. 地点为[全国]的职位，放入“其它”中。
+
+实习职位地点链接
+
+北京：http://www.yingjiesheng.com/beijing/ptjob.html
+更多：http://www.yingjiesheng.com/beijing-moreptjob-1.html
+
+上海：http://www.yingjiesheng.com/shanghai/ptjob.html
+更多：http://www.yingjiesheng.com/shanghai-moreptjob-1.html
+
+广州：http://www.yingjiesheng.com/guangzhou/ptjob.html
+更多：http://www.yingjiesheng.com/guangzhou-moreptjob-1.html
+
+南京：http://www.yingjiesheng.com/nanjing/ptjob.html
+更多：http://www.yingjiesheng.com/nanjing-moreptjob-1.html
+
+武汉：http://www.yingjiesheng.com/wuhan/ptjob.html
+更多：http://www.yingjiesheng.com/wuhan-moreptjob-1.html
+
+深圳：http://www.yingjiesheng.com/shenzhen/ptjob.html
+更多：http://www.yingjiesheng.com/shenzhen-moreptjob-1.html
+
+成都：http://www.yingjiesheng.com/chengdu/ptjob.html
+更多：http://www.yingjiesheng.com/chengdu-moreptjob-1.html
+
+天津：http://www.yingjiesheng.com/tianjin/ptjob.html
+更多：http://www.yingjiesheng.com/tianjin-moreptjob-1.html
+
+其它：http://www.yingjiesheng.com/other/ptjob.html
+更多：http://www.yingjiesheng.com/other-moreptjob-1.html
+
+注：各地实习职位首页下方的职位是非合作实习职位，也就是我们要抓取的
+    各地首页的职位比较新，但是不全，可以从更多里抓取，但是更多的内容会比首页滞后些。

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] (%c:%L) - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="fibatis" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value=".yyyy-MM-dd"/>
+        <param name="File" value="ibatis.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] (%c:%L) - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="fsql" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value=".yyyy-MM-dd"/>
+        <param name="File" value="sql.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] (%c:%L) - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="froot" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value=".yyyy-MM-dd"/>
+        <param name="File" value="root.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] (%c:%L) - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="ERROR"/>
+            <param name="LevelMin" value="ERROR"/>
+        </filter>
+    </appender>
+
+    <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value=".yyyy-MM-dd"/>
+        <param name="File" value="debug.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] (%c{2}:%L) - %t %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="test" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value=".yyyy-MM-dd"/>
+        <param name="File" value="test.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="infoLog" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value=".yyyy-MM-dd"/>
+        <param name="File" value="info.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] (%c{2}:%L) - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="INFO"/>
+            <param name="LevelMin" value="INFO"/>
+        </filter>
+    </appender>
+
+    <appender name="warnLog" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value=".yyyy-MM-dd"/>
+        <param name="File" value="warn.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] (%c{2}:%L) - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="WARN"/>
+            <param name="LevelMin" value="WARN"/>
+        </filter>
+    </appender>
+
+    <appender name="errorLog" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value=".yyyy-MM-dd"/>
+        <param name="File" value="error.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] (%c{2}:%L) - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="ERROR"/>
+            <param name="LevelMin" value="ERROR"/>
+        </filter>
+    </appender>
+
+
+    <logger name="com.dajie.common.framework.ibatis" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="fibatis"/>
+    </logger>
+    <logger name="java.sql" additivity="false">
+        <level value="error"/>
+        <appender-ref ref="fsql"/>
+    </logger>
+
+    <logger name="com.dajie.crawler" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="file"/>
+        <appender-ref ref="infoLog"/>
+        <appender-ref ref="warnLog"/>
+        <appender-ref ref="errorLog"/>
+    </logger>
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="froot"/>
+    </root>
+</log4j:configuration>

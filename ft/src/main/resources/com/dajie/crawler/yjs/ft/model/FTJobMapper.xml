@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd" >
+<mapper namespace="com.chris.crawler.yjs.ft.dao.FTJobDao">
+
+    <resultMap id="ptJobResultMap" type="com.chris.crawler.yjs.ft.model.FTJob">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="yjs_url" property="yjsUrl" jdbcType="VARCHAR"/>
+        <result column="schedule_begin" property="scheduleBegin" jdbcType="VARCHAR"/>
+        <result column="refer_url" property="referUrl" jdbcType="VARCHAR"/>
+        <result column="recruit_type" property="recruitType" jdbcType="VARCHAR"/>
+        <result column="apply_url" property="applyUrl" jdbcType="VARCHAR"/>
+        <result column="major" property="major" jdbcType="VARCHAR"/>
+        <result column="yjs_major" property="yjsMajor" jdbcType="VARCHAR"/>
+        <result column="degree" property="degree" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertFTJob" parameterType="com.chris.crawler.yjs.ft.model.FTJob">
+        INSERT INTO tb_yjs_project
+        (name,yjs_url, apply_url,schedule_begin,refer_url,recruit_type,
+        major,yjs_major, degree,place,content,create_date)
+        VALUES (#{name,jdbcType=VARCHAR},
+                #{yjsUrl,jdbcType=VARCHAR},
+                #{applyUrl,jdbcType=VARCHAR},
+                #{scheduleBegin,jdbcType=VARCHAR},
+                #{referUrl,jdbcType=VARCHAR},
+                #{recruitType,jdbcType=VARCHAR},
+                #{major,jdbcType=VARCHAR},
+                #{yjsMajor,jdbcType=VARCHAR},
+                #{degree,jdbcType=VARCHAR},
+                #{place,jdbcType=VARCHAR},
+                #{content,jdbcType=VARCHAR},
+                #{createDate,jdbcType=VARCHAR}
+                )
+    </insert>
+</mapper>

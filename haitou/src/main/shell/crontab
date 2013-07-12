@@ -1,0 +1,4 @@
+
+#-----------------------------------------
+## 每天执行
+0 8,12,16,23 * * * /ROOT/project/crawler/haitou/crawler.sh start 2>&1 1>> /ROOT/project/crawler/haitou/run.log

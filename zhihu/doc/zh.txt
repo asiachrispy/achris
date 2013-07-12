@@ -1,0 +1,40 @@
+﻿151:3313  DB_ask
+| tb_question_spider |  【蜘蛛知乎数据】
+| tb_question_spider_audit |  【蜘蛛知乎审核】
+| tb_spider_uid |
+
+jdbc:mysql://10.10.32.174:53344/DB_PARSER
+<property name="username" value="zh"/>
+<property name="password" value="zh"/>
+  
+//批量获取问题
+String sql = "SELECT qid,content,detail,tags FROM tb_zh_question_detail order by qid asc limit ?,?";
+class SpiderQuestion :
+        private int qid;
+        private String content;
+        private String detail;
+        private String tags;
+        private int answerCnt;
+        private Date createDate;
+        private int uid;
+
+		
+//批量获取答案	
+String sql = "SELECT qid,aid,content FROM tb_zh_answer where  qid > ? and qid < ? ";
+class SpiderAnswer :
+        private int qid;
+        private int aid;
+        private String content;
+        private Date createDate;
+        private int uid;
+  
+  
+//批量获取评论
+String sql = "SELECT a.qid,c.aid,c.id as cid,c.content FROM tb_zh_answer a,tb_zh_comment c where  a.qid > ? and a.qid < ? and a.aid = c.aid ";
+ class SpiderComment :
+        private int qid;
+        private int cid;
+        private int aid;
+        private String content;
+        private Date createDate;
+        private int uid;

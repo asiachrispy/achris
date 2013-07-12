@@ -1,0 +1,36 @@
+http://xjh.haitou.cc/  宣讲会
+抓取字段示例数据：
+城市、学校、宣讲会标题、举办时间、举办地点、抓站地址
+抓取数据处理：
+对接到现宣讲会后台
+
+http://xyzp.haitou.cc/  校园招聘
+抓取字段示例数据：
+项目标题、抓站地址、来源地址、网申地址、日程开始时间、项目内容
+抓取数据处理：
+对接到现抓站审核后台
+
+
+<tr bgcolor="#FFFFFF">
+		<td>
+			<ul align="center" class="ico_box">
+				<li style="padding-left:4px;" class="ico_2" id="save61181">
+				    <a name="save" href="javascript:void(0);" title="点击收藏本条消息"></a>
+				</li>
+			</ul>
+		</td>
+
+		<td>
+		    <a target="_blank" title="明天控股有限公司面试" href="/article/61181.html" class="con_tb_title" name="title">
+		        <font color="red"></font>明天控股有限公司
+		    </a>
+		    <font color="#999999">中大</font>
+        </td>
+
+		<td>2013-05-30 15:00<font color="red">(今天)</font></td>
+		<td>南校区熊德龙503&nbsp;</td>
+		<td>2013-05-29 11:58</td>
+		<td align="right" style="padding-right:14px;">
+		    <font color="">193</font>
+		</td>
+</tr>

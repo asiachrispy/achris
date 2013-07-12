@@ -1,0 +1,8 @@
+
+bin
+ -mon  周一执行的配置文件路径
+ -crawler.sh  只抓取的脚本
+ -lib   包文件路径
+ -main.sh  抓取并发送报表的脚本，可指定生成指定日期的报表
+ -report  报表文件路径
+ -report.sh 发送报表的脚本

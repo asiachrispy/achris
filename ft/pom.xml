@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.dajie.base</groupId>
+        <artifactId>dajie-base-parent</artifactId>
+        <version>1.2-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.dajie</groupId>
+    <artifactId>dj-crawler-yjs-ft</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <name>dj-crawler-yjs-ft</name>
+
+    <scm>
+        <connection>scm:svn:http://dev.dajie-inc.com:80/svn/dj/trunk/algorithm/dj_crawler/ft/
+        </connection>
+        <developerConnection>scm:svn:http://dev.dajie-inc.com:80/svn/dj/trunk/algorithm/dj_crawler/ft/
+        </developerConnection>
+    </scm>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <finalName>${project.artifactId}-${build.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <preparationGoals>clean install</preparationGoals>
+                    <tagBase>http://${local.scm.svn.host}:${local.scm.svn.port}/svn/dj/tags/crawler</tagBase>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.dajie.common</groupId>
+            <artifactId>dajie-common-config</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.dajie.common</groupId>
+            <artifactId>dajie-common-file</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.dajie.common</groupId>
+            <artifactId>dajie-common-guice</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.dajie.common</groupId>
+            <artifactId>dajie-common-ibatis</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.dajie.common</groupId>
+            <artifactId>dajie-common-util</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.dajie.common</groupId>
+            <artifactId>dajie-common-monitor-app-postman</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dajie.dictionary</groupId>
+            <artifactId>dj-dictionary-client</artifactId>
+        </dependency>
+        <!-- third libs -->
+        <dependency>
+            <groupId>com.jolbox</groupId>
+            <artifactId>bonecp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+        </dependency>
+    </dependencies>
+</project>

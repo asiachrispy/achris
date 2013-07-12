@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>5</version>
+    </parent>
+
+    <groupId>com.chris</groupId>
+    <artifactId>chris-core</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>chris-core</name>
+
+    <scm>
+        <url>http://github.com/asiachrispy/achris/core</url>
+        <connection>scm:git:git@github.com:asiachrispy/achris.git</connection>
+        <developerConnection>scm:git:git@github.com:asiachrispy/achris.git</developerConnection>
+    </scm>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <preparationGoals>clean install</preparationGoals>
+                    <tagBase>scm:git:git@github.com:asiachrispy/tags/core</tagBase>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.dajie.common</groupId>-->
+            <!--<artifactId>dajie-common-config</artifactId>-->
+            <!--<optional>true</optional>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.dajie.common</groupId>-->
+            <!--<artifactId>dajie-common-file</artifactId>-->
+            <!--<optional>true</optional>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.dajie.common</groupId>-->
+            <!--<artifactId>dajie-common-guice</artifactId>-->
+            <!--<optional>true</optional>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.dajie.common</groupId>-->
+            <!--<artifactId>dajie-common-ibatis</artifactId>-->
+            <!--<optional>true</optional>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.dajie.common</groupId>-->
+            <!--<artifactId>dajie-common-util</artifactId>-->
+            <!--<optional>true</optional>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.dajie.common</groupId>-->
+            <!--<artifactId>dajie-common-monitor-app-postman</artifactId>-->
+        <!--</dependency>-->
+        <!-- third libs -->
+        <dependency>
+            <groupId>com.jolbox</groupId>
+            <artifactId>bonecp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dajie</groupId>
+            <artifactId>dj-crawler-jsoup</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+    </dependencies>
+</project>

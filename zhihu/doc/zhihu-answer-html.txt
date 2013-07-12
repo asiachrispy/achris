@@ -1,0 +1,55 @@
+﻿===========================================answers  <div data-action="/answer/content" class="zm-item-rich-text">
+<div data-score="40.12722" data-isowner="0" data-helpful="1" data-isfriend="0" 
+data-deleted="0" data-created="1364958032" data-collapsed="0" data-atoken="16578599" 
+data-aid="1762965" class="zm-item-answer " tabindex="-1">
+
+	<div data-action="/answer/content" data-resourceid="544434" class="zm-item-rich-text">
+		<div class="zm-editable-content clearfix">受黄老板邀请。回答。必须不匿名。<br><br>解题：1，京品会和唯品会对比，竞争如何？<br>          2，能在服装闪购市场抢多大的份额？<br><br>答1：<br>对于一个还没上线的频道，作为非京东人士，不知道他们的发展思路，还真是难说。<br>我从唯品会说说，或许能解惑一些。<br>a，唯品会定位清晰，库存，尾货清货平台。最少早年是这样起家的，在买家的心中是这样，尤其是一些党政机关事业单位编制的买家群体。<br>b，唯品会去年营销重新定位：一家专门做特卖的网站。试图从营收，包装故事，模式上来扩大兼容。事实上也确实如此，不仅仅在服装的品类，其他品类也拓宽了很多，另外对商品的要求上，也不仅仅局限在尾货上，新品，应季等也多了很多。<br>c，市场占有率上，唯品会也一直是一家独大，身为一个卖家，杭州女装的，多到一期800w销售，一般到100-200w销售，小到50-80w销售。可以最直观的反映情况。其他家的特卖平台，很少能到唯品会最低这个档次的。<br>d，必须补充的是，唯品会的客户黏性和重复购买率。（多去23线看看，政府事业单位，别信专家的。）<br><br>刨除运营，资源，推广等，新的京品会一样面临这些问题。<br>定位，推广，客群，（甚至还有对原有正常销售渠道的冲击，所以你很少看见特卖闪货和常规销售都做的很好的同一个平台和网站。）都是问题。<br><br>答2：<br>我是土鳖。<br>份额这事，什么数据来的都tmd是不靠谱的。<br>最靠谱的就是找几家大的卖家，问问在平台销售的份额比，最后得出一个大致的数据。<br><br>我感官数据：（我们家男装女装，外加杭派女装近10个牌子的大致数据，也仅仅局限在服装这块）<br>唯品会目前销售是一般闪货渠道的8-15倍。<br>其他家的专门做闪货的，几年下来也还是这样。不知道京东是否能打破。<br><br>先回答到这里。<br>【市场发展这个东西很有时效性。我现在回答的时间是2013年4月3号】</div>
+	</div>
+</div>
+
+<div data-score="26.12696" data-isowner="0" data-helpful="1" data-isfriend="0" 
+data-deleted="0" data-created="1368020664" data-collapsed="0" data-atoken="16960077" 
+data-aid="1917273" class="zm-item-answer " tabindex="-1">
+
+	<div data-action="/answer/content" data-resourceid="544434" class="zm-item-rich-text">
+		<div class="zm-editable-content clearfix"><b>讲讲我个人的看法吧：</b><br><br><br><b>1、从模式上看：</b><br><br>天猫、京东、凡客推出品牌特卖均是在原有招商品牌的基础上进行的，也就是说，与这几个平台已有合作的品牌可以有选择地进行品牌特卖，而不会特地为品牌特卖的模式去引入品牌商。<br><br>京东、凡客对品牌有入库要求，但是从品牌商反应来看，对商品入库具有强大的抵触情绪（业内都知道，服装、鞋帽、饰品等商品入库的操作非常繁琐，库存管理也非常繁琐）。京东目前的服装均为第三方管理，这次操作品牌特卖，仅仅是以团购部门来牵头进行，应当是属于初试的方式，之后会视情况进行调整。<br><br>京东内部对此项目的支持度不一，POP（开放平台运营部）对此项目采取不跟进不支持的态度（部分缘于原POP平台领导人后调任负责团购，也由于内部考核机制问题），财务结算方面与品牌商使用的则是与POP共用结算平台。因此，此项目基本属于对品牌商的强制促销方式，而不是一种新商业模式的开拓。此点与天猫类似。<br><br>凡客是由单独的部门来进行从招商到运营的工作。<br><br><b>2、从这套模式的产业链来看：</b><br>品牌商-特卖平台-用户<br>这一特卖模式的运营基础是：整个中国的服装鞋帽行业目前处于库存高启的状态，品牌商将电子商务（包括品牌特卖形式）作为自己的一个出货方式，而品牌特卖闪购的形式则是更加有特色的营销方式，对用户来说也是一种较为有效的营销手段。<br>因此，从品牌商角度来看，选择哪一个平台进行特卖，对他们来说没有特别的青睐，只要能出货，他们就愿意进行合作。而唯品会自身还拥有一些好品牌的独家销售合同作为合作门槛。<br>我更愿意从用户流量的角度来分析几个平台进行特卖领域对唯品会的影响：<br>自去年10月以来，唯品会的平均每日独立IP访问量稳定在400000左右，今年2、3月上升到500000左右，而4月底电视广告的推出，有几天达到100多万。而这个区间正是这几大平台推出品牌特卖的时间段，从流量数字本身可以看出几大平台推出相同销售形式并未对唯品会的用户流量产生大影响。<br><br><b>3、从利润率和成本角度来看：</b><br><br>利润率方面，唯品会目前的毛利率保持在20%左右。它的利润率会由于几大平台进入这个业务而下降吗？我们可以从品牌商的角度来看。<br>唯品会大部分采用的是买断采购的形式，因此它的量是可以有微笑曲线的。大部分产品售价由唯品会确定。<br>品牌商运营天猫品牌特卖，应当是不需要付出额外成本的。因此，品牌商在天猫运营只需要付出占销售额近13-14%的平台运营费用。产品售价由品牌商确定。<br>品牌商运营京东品牌特卖，付出8%左右的提成费用，京东要求入库的话，还需要另外付出每单20元的仓储配送费用。以每个订单130-200元计算，品牌商付出的是将近15-20%的服务费用。产品售价由品牌商确定。<br>凡客的收费与京东相似。<br>在这三大平台均需品牌商自己做运营的前提下，他们应当是会选择各个平台进行差异化的分销，而不是进行同质化的分销的。因此产品的售价是会根据平台不同的用户特征而确定的。因此我认为且不论品牌重复程度会不会高，即使品牌有重复，他们的产品售价与产品类别也会有差异。<br><br>从成本角度，唯品会的流量获取成本（主要是营销成本等）会由于几大平台推出类似业务而有所增长。这一点需要考量。<br><br><b>4、从此业务占各家的业务比重来看：</b><br>唯品会只依赖于此特卖业务，一定会做足精细化运营工作。<br>其它平台，特卖业务对他们来说可能只是一个营销方式，一定程度上可有可无，因此不会有拼死一搏的决心来对唯品会形成挑战。<br><br><br>综上，天猫、京东、凡客等网站与平台推出类似唯品会的业务模式，对唯品会自身的影响并不会很大（不管从用户流量，还是从利润率角度来考虑），在成本方面短期内会对其营销成本造成一定的压力。长期来看，各个平台之间会形成一定的差异化，只要唯品会能够利用好用户存量进行精细化运营，几大平台对其影响不会太大。</div>
+	</div>
+</div>?
+
+===========================================tags   <a  class="zm-item-tag"></a>
+<div class="zm-tag-editor-labels zg-clear">
+<a href="/topic/19662168" class="zm-item-tag" data-tip="t$b$19662168">
+X 是怎么火起来的
+</a>
+<a href="/topic/19840098" class="zm-item-tag" data-tip="t$b$19840098">
+特别关注（杂志）
+</a>
+<a name="edit" class="zu-edit-button" href="javascript:;"><i class="zu-edit-button-icon"></i>修改</a>
+</div>
+
+===========================================title  <h2 class="zm-item-title zm-editable-content">
+<div id="zh-question-title" class="zm-editable-status-normal">
+<h2 class="zm-item-title zm-editable-content">《特别关注》杂志是怎么火起来的？<a name="edit" class="zu-edit-button" href="javascript:;">
+<i class="zu-edit-button-icon"></i>修改</a></h2>
+</div>
+
+===========================================content <div class="zm-editable-content">
+<div data-action="/question/detail" data-resourceid="593620" class="zm-item-rich-text zm-editable-status-normal" id="zh-question-detail">
+<div class="zm-editable-content">《特别关注》杂志是湖北日报报业集团主管主办的，是一本以中年男性为主要读者对象的刊物。<a name="edit" class="zu-edit-button" href="javascript:;"><i class="zu-edit-button-icon"></i>修改</a></div>
+</div>
+
+
+===========================================LIST
+http://www.zhihu.com/log/questions?start=1&offset=1&_xsrf=33c97c30f1fb4189bd50347a43e14191
+
+start=59071419&offset=20&_xsrf=33c97c30f1fb4189bd50347a43e14191
+=========================================== header
+Accept	text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Encoding	gzip, deflate
+Accept-Language	zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3
+Connection	keep-alive
+Cookie	_xsrf=7547a995c9c840db8bf28202107a5fe6; q_c1=2a1b0bff85b445f082263baf1e4c8070|1368160566000|1368160566000; q_c0="MzNkNWFjZTAzNjM3MmMxOWZmNjBmYTAzM2M0NDAwMDR8UW45cFAxTHBEb2I5N3g1dQ==|1368160567|3f18ccec830bce45b68fdddf706546f38b00e118"; __utma=51854390.1401284792.1368160395.1368160395.1368160395.1; __utmb=51854390.1.10.1368160395; __utmc=51854390; __utmz=51854390.1368158462.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+Host	www.zhihu.com
+Referer	http://www.zhihu.com/
+User-Agent	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0

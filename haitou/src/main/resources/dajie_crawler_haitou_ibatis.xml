@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="lazyLoadingEnabled" value="false"/>
+    </settings>
+    <typeAliases>
+        <typeAlias alias="BONECP" type="com.dajie.common.framework.ibatis.datasource.BoneCPDataSourceFactory"/>
+    </typeAliases>
+    <plugins>
+        <plugin interceptor="com.dajie.common.framework.ibatis.plugin.QueryInterceptor"/>
+    </plugins>
+    <environments default="crawler">
+        <environment id="crawler">
+            <transactionManager type="JDBC"/>
+            <dataSource type="BONECP">
+                <property name="driver" value="${crawler_driver}"/>
+                <property name="url" value="${crawler_url4crawler}"/>
+                <property name="username" value="${crawler_username}"/>
+                <property name="password" value="${crawler_password}"/>
+                <property name="maxPoolSize" value="${crawler_maxPoolSize}"/>
+                <property name="minPoolSize" value="${crawler_minPoolSize}"/>
+            </dataSource>
+        </environment>
+        <environment id="crawler_read">
+            <transactionManager type="JDBC"/>
+            <dataSource type="BONECP">
+                <property name="driver" value="${crawler_driver}"/>
+                <property name="url" value="${crawler_url4crawler_read}"/>
+                <property name="username" value="${crawler_username}"/>
+                <property name="password" value="${crawler_password}"/>
+                <property name="maxPoolSize" value="${crawler_maxPoolSize}"/>
+                <property name="minPoolSize" value="${crawler_minPoolSize}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/dajie/crawler/haitou/model/HtxjhMapper.xml"/>
+    </mappers>
+</configuration>
