@@ -1,8 +1,5 @@
 package com.chris.algo;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * @author by http://www.bt285.cn http://www.5a520.cn
