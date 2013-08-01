@@ -7,12 +7,17 @@ import java.util.List;
  * User: zhong.huang
  * Date: 13-8-1
  */
-public class ArrTest {
+public class SomeAlgorithm {
 
+    /**
+     * 打印数组
+     *
+     * @param arr
+     */
     public static void printArr(int[] arr) {
         if (validate(arr)) {
             for (int i = 0; i < arr.length; i++) {
-                System.out.print(arr[i] + " ");
+                System.out.print(arr[i] + ",");
             }
             System.out.println();
         }
@@ -132,6 +137,10 @@ public class ArrTest {
      * @param hight
      */
     public static void quickSortAsc(int[] arr, int low, int hight) {
+        if (arr == null && arr.length == 0) {
+            return;
+        }
+
         if (low < hight) { // 这个条件用来结束递归
             int pre = low;
             int bac = hight;
@@ -188,7 +197,6 @@ public class ArrTest {
         }
     }
 
-
     /**
      * 二分查找特定整数在整型数组中的位置(非递归)
      * <p/>
@@ -209,7 +217,6 @@ public class ArrTest {
         }
 
         while (beginIndex <= endIndex) {
-            //相当于midIndex = (beginIndex + endIndex) / 2，但是效率会高些
             midIndex = (beginIndex + endIndex) >>> 1;
             if (data < arr[midIndex]) {
                 endIndex = midIndex - 1;
