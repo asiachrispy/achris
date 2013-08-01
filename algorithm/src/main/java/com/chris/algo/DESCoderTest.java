@@ -1,6 +1,8 @@
 package com.chris.algo;
 
 
+import org.junit.Test;
+
 /**
  * @author by http://www.bt285.cn http://www.5a520.cn
  * @version 1.0
@@ -26,6 +28,5 @@ public class DESCoderTest {
 
         System.err.println("解密后:\t" + outputStr);
 
-        assertEquals(inputStr, outputStr);
     }
 }
