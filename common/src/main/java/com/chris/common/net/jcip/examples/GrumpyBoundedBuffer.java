@@ -1,7 +1,6 @@
 package com.chris.common.net.jcip.examples;
 
-import com.dajie.common.net.jcip.examples.BaseBoundedBuffer;
-import net.jcip.annotations.ThreadSafe;
+import org.bson.util.annotations.ThreadSafe;
 
 /**
  * GrumpyBoundedBuffer

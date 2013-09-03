@@ -1,8 +1,11 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.*;
+import org.apache.http.annotation.GuardedBy;
+import org.apache.http.annotation.ThreadSafe;
 
-import net.jcip.annotations.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * MonitorVehicleTracker

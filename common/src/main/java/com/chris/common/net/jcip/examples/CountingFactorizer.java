@@ -1,10 +1,13 @@
 package com.chris.common.net.jcip.examples;
 
-import java.math.BigInteger;
-import java.util.concurrent.atomic.*;
-import javax.servlet.*;
+import org.apache.http.annotation.ThreadSafe;
 
-import net.jcip.annotations.*;
+import javax.servlet.GenericServlet;
+import javax.servlet.Servlet;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import java.math.BigInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * CountingFactorizer

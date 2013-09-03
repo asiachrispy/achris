@@ -1,8 +1,10 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.*;
+import org.bson.util.annotations.ThreadSafe;
 
-import net.jcip.annotations.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @ThreadSafe
 class GoodListHelper <E> {

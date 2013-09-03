@@ -1,8 +1,10 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.*;
+import org.bson.util.annotations.GuardedBy;
+import org.bson.util.annotations.ThreadSafe;
 
-import net.jcip.annotations.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * CooperatingNoDeadlock

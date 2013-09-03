@@ -27,7 +27,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  }
 
  ReadWriteLock接口
- 为了提高效率有些共享资源允许同时进行多个读的操作，但只允许一个写的操作，比如一个文件，只要其内容不变可以让多个线程同时读，不必做排他的锁定，排他的锁定只有在写的时候需要，以保证别的线程不会看到数据不完整的文件。ReadWriteLock可满足这种需要。ReadWriteLock内置两个Lock，一个是读的Lock，一个是写的Lock。多个线程可同时得到读的Lock，但只有一个线程能得到写的Lock，而且写的Lock被锁定后，任何线程都不能得到Lock。ReadWriteLock提供的方法有：
+ 为了提高效率有些共享资源允许同时进行多个读的操作，但只允许一个写的操作，比如一个文件
+ ，只要其内容不变可以让多个线程同时读，不必做排他的锁定，
+ 排他的锁定只有在写的时候需要，以保证别的线程不会看到数据不完整的文件。ReadWriteLock可满足这种需要。ReadWriteLock内置两个Lock，一个是读的Lock，一个是写的Lock。多个线程可同时得到读的Lock，但只有一个线程能得到写的Lock，而且写的Lock被锁定后，任何线程都不能得到Lock。ReadWriteLock提供的方法有：
  readLock(): 返回一个读的lockwriteLock(): 返回一个写的lock, 此lock是排他的。
  ReadWriteLock的例子：
  */

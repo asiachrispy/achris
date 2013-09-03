@@ -1,8 +1,9 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.concurrent.atomic.*;
+import org.bson.util.annotations.Immutable;
+import org.bson.util.annotations.ThreadSafe;
 
-import net.jcip.annotations.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * CasNumberRange

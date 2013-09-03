@@ -1,6 +1,7 @@
 package com.chris.common.net.jcip.examples;
 
-import net.jcip.annotations.*;
+import org.apache.http.annotation.GuardedBy;
+import org.apache.http.annotation.ThreadSafe;
 
 /**
  * SimulatedCAS

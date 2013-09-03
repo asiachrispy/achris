@@ -1,9 +1,11 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.*;
-import java.util.regex.*;
+import org.bson.util.annotations.GuardedBy;
+import org.bson.util.annotations.ThreadSafe;
 
-import net.jcip.annotations.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * AttributeStore

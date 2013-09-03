@@ -1,8 +1,10 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.concurrent.*;
+import org.bson.util.annotations.ThreadSafe;
 
-import net.jcip.annotations.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.Semaphore;
 
 /**
  * BoundedExecutor

@@ -1,10 +1,11 @@
 package com.chris.common.net.jcip.examples;
 
+import org.bson.util.annotations.GuardedBy;
+
 import java.io.PrintWriter;
 import java.io.Writer;
-import java.util.concurrent.*;
-
-import net.jcip.annotations.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * LogService

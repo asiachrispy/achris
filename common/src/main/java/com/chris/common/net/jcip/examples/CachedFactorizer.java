@@ -1,9 +1,13 @@
 package com.chris.common.net.jcip.examples;
 
-import java.math.BigInteger;
-import javax.servlet.*;
+import org.bson.util.annotations.GuardedBy;
+import org.bson.util.annotations.ThreadSafe;
 
-import net.jcip.annotations.*;
+import javax.servlet.GenericServlet;
+import javax.servlet.Servlet;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import java.math.BigInteger;
 
 /**
  * CachedFactorizer

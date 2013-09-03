@@ -1,6 +1,7 @@
 package com.chris.common.net.jcip.examples;
 
-import net.jcip.annotations.*;
+import org.bson.util.annotations.GuardedBy;
+import org.bson.util.annotations.ThreadSafe;
 
 /**
  * Counter

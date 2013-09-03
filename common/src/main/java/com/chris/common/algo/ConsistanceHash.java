@@ -1,6 +1,6 @@
 package com.chris.common.algo;
 
-import org.apache.hadoop.util.bloom.HashFunction;
+import com.google.common.hash.HashFunction;
 
 import java.util.Collection;
 import java.util.SortedMap;

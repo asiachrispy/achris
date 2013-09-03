@@ -1,6 +1,6 @@
 package com.chris.common.net.jcip.examples;
 
-import net.jcip.annotations.*;
+import org.apache.http.annotation.NotThreadSafe;
 
 /**
  * MutablePoint

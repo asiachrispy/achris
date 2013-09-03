@@ -1,6 +1,6 @@
 package com.chris.common.net.jcip.examples;
 
-import net.jcip.annotations.GuardedBy;
+import org.bson.util.annotations.GuardedBy;
 
 import java.math.BigInteger;
 import java.util.HashMap;

@@ -1,8 +1,11 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.concurrent.locks.*;
+import org.bson.util.annotations.GuardedBy;
+import org.bson.util.annotations.ThreadSafe;
 
-import net.jcip.annotations.*;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * ConditionBoundedBuffer

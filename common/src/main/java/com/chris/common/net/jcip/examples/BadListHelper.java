@@ -1,6 +1,6 @@
 package com.chris.common.net.jcip.examples;
 
-import net.jcip.annotations.NotThreadSafe;
+import org.bson.util.annotations.NotThreadSafe;
 
 import java.util.ArrayList;
 import java.util.Collections;

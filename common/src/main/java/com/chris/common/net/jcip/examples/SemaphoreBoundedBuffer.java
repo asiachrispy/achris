@@ -1,8 +1,9 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.concurrent.*;
+import org.bson.util.annotations.GuardedBy;
+import org.bson.util.annotations.ThreadSafe;
 
-import net.jcip.annotations.*;
+import java.util.concurrent.Semaphore;
 
 /**
  * BoundedBuffer

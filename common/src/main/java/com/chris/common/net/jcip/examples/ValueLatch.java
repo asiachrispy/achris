@@ -1,8 +1,9 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.concurrent.*;
+import org.apache.http.annotation.GuardedBy;
+import org.apache.http.annotation.ThreadSafe;
 
-import net.jcip.annotations.*;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * ValueLatch

@@ -1,8 +1,9 @@
 package com.chris.common.net.jcip.examples;
 
-import java.util.*;
+import org.bson.util.annotations.Immutable;
 
-import net.jcip.annotations.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * PuzzleNode
